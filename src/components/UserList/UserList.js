@@ -21,7 +21,7 @@ const UserList = ({ users, isLoading }) => {
     <S.UserList>
       <S.Filters>
         <CheckBox value="BR" label="Brazil" />
-        <CheckBox value="AU" label="Australia" />
+        <CheckBox value="AU" label="Austaralia" />
         <CheckBox value="CA" label="Canada" />
         <CheckBox value="DE" label="Germany" />
       </S.Filters>
