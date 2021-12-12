@@ -4,21 +4,8 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import * as S from "./style";
 
-const User = ({ user, index, favoriteUsers, likeUser, unLikeUser }) => {
+const User = ({ user, index, isFavorite, likeUser, unLikeUser }) => {
   const [hoveredUserId, setHoveredUserId] = useState();
-  const [isUserLike, setIsUserLike] = useState(false);
-
-  useEffect(() => {
-    const checkIsLike = () => {
-      let isLiker = false;
-      if (favoriteUsers.length > 0) {
-        isLiker =
-          favoriteUsers.filter((u) => u.login.uuid === user.login.uuid).length > 0;
-      }
-      return isLiker;
-    };
-    setIsUserLike(checkIsLike());
-  }, [favoriteUsers, user]);
 
   const handleMouseEnter = (index) => {
     setHoveredUserId(index);
@@ -43,7 +30,7 @@ const User = ({ user, index, favoriteUsers, likeUser, unLikeUser }) => {
           {user?.location.city} {user?.location.country}
         </Text>
       </S.UserInfo>
-      {isUserLike ? (
+      {isFavorite ? (
         <S.IconButtonWrapper isVisible={true}>
           <IconButton onClick={() => unLikeUser(user)}>
             <FavoriteIcon color="error" />
